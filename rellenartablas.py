@@ -304,11 +304,11 @@ def create_necesita_usar(curs,fake):
             curs.execute('SELECT idcompra FROM venta ORDER BY RANDOM() LIMIT 1;')
             venta = curs.fetchmany(1)
             curs.execute('SELECT nombre FROM producto ORDER BY RANDOM() LIMIT 1;')
-            cliente=curs.fetchmany(1)
-            duracion= 3
+            producto=curs.fetchmany(1)
+            cantidad= randint(3,19)
             curs.execute(
                         f"""INSERT INTO necesita_usar(ventaid,producton,cantidad)
-                                VALUES('{venta[0][0]}','{cliente[0][0]}','{duracion}');""")
+                                VALUES('{venta[0][0]}','{producto[0][0]}','{cantidad}');""")
         except Exception as e:
             print(e)
                 
