@@ -49,7 +49,7 @@ CREATE TABLE Organizacion(
 CREATE TABLE Venta(
     idCompra varchar(10) NOT NULL PRIMARY KEY,
     VendedorID bigint NOT NULL,
-    Direccion varchar(50)NOT NULL,
+    Direccion varchar(250)NOT NULL,
     constraint FK_VentaVendedorID FOREIGN KEY (VendedorID) REFERENCES Vendedor(DNI)
 );
 
