@@ -10,7 +10,7 @@ CREATE TABLE Trabajador (
     Sueldo int NOT NULL,
     Turno varchar(10) NOT NULL,
     fecha_inicio_tra date not NULL,
-    fecha_fin_tra date NOT NULL,
+    fecha_fin_tra date ,
     constraint FK_TrabajadorDNI FOREIGN KEY (DNI) REFERENCES Persona(DNI)
 
 );
