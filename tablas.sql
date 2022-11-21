@@ -5,12 +5,12 @@ CREATE TABLE Persona (
     Nombre varchar(50) NOT NULL
 );
 
-CREATE TABLE Trabajador (
+CREATE TABLE Trabajador (  
     DNI bigint NOT NULL PRIMARY KEY ,
-    Sueldo int,
-    Turno varchar(10),
-    fecha_inicio_tra date,
-    fecha_fin_tra date,
+    Sueldo int NOT NULL,
+    Turno varchar(10) NOT NULL,
+    fecha_inicio_tra date not NULL,
+    fecha_fin_tra date NOT NULL,
     constraint FK_TrabajadorDNI FOREIGN KEY (DNI) REFERENCES Persona(DNI)
 
 );
@@ -35,35 +35,35 @@ CREATE TABLE Cliente (
 
 CREATE TABLE Producto(
     Nombre varchar(50) NOT NULL PRIMARY KEY,
-    Tipo varchar(20)
+    Tipo varchar(20) NOT NULL
 );
 
 -- Tabla de Organización
 
 CREATE TABLE Organizacion(
     RUC bigint NOT NULL PRIMARY KEY,
-    Nombre varchar(50),
-    Tipo varchar(20)
+    Nombre varchar(50)NOT NULL,
+    Tipo varchar(20)NOT NULL
 );
 -- Tablas de Venta
 CREATE TABLE Venta(
     idCompra varchar(10) NOT NULL PRIMARY KEY,
-    VendedorID bigint,
-    Direccion varchar(50),
+    VendedorID bigint NOT NULL,
+    Direccion varchar(50)NOT NULL,
     constraint FK_VentaVendedorID FOREIGN KEY (VendedorID) REFERENCES Vendedor(DNI)
 );
 
 CREATE TABLE VentaCorta (
     idCompra varchar(10) not NULL PRIMARY KEY,
-    ClienteID bigint,
+    ClienteID bigint NOT NULL,
     constraint FK_idCompraVC FOREIGN KEY (idCompra) REFERENCES Venta(idCompra),
     constraint FK_ClienteDNIVC FOREIGN KEY (ClienteID) REFERENCES Cliente(DNI)
 );
 
 CREATE TABLE VentaLarga(
     idCompra varchar(10) not NULL PRIMARY KEY,
-    OrganizacionRuc bigint,
-    Duracion_estimada  int,
+    OrganizacionRuc bigint NOT NULL,
+    Duracion_estimada  int NOT NULL,
     constraint FK_idCompraVL FOREIGN KEY (idCompra) REFERENCES Venta(idCompra),
     constraint FK_RUC FOREIGN KEY (OrganizacionRuc)  REFERENCES Organizacion(RUC)
 
@@ -71,8 +71,8 @@ CREATE TABLE VentaLarga(
 
 CREATE TABLE Instalacion(
     VentaID varchar(10) NOT NULL,
-    Fecha_instalacion date,
-    InstaladorDNI bigint,
+    Fecha_instalacion date NOT NULL,
+    InstaladorDNI bigint NOT NULL,
     constraint FK_VentaIDI FOREIGN KEY (VentaID) REFERENCES Venta(idCompra),
     constraint FK_InstaladorDNIIDI FOREIGN KEY (InstaladorDNI) REFERENCES Instalador(DNI),
 
@@ -83,7 +83,7 @@ CREATE TABLE Instalacion(
 CREATE TABLE necesita_usar  (
     VentaID varchar(10) not NULL,
     ProductoN varchar(50) not NULL,
-    Cantidad int,
+    Cantidad int NOT NULL,
     constraint FK_VentaID FOREIGN KEY (VentaID) REFERENCES Venta(idCompra),
     constraint FK_Producto FOREIGN KEY (ProductoN) REFERENCES Producto(Nombre),
     constraint PK_NU PRIMARY KEY(VentaID,ProductoN)
