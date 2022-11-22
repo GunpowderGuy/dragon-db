@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from contextlib import nullcontext
 from faker import Faker
 from datetime import timedelta
-from random import randint, uniform
+from random import choice, randint, uniform
 import psycopg2
 
 
