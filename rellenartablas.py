@@ -148,8 +148,8 @@ def create_gerenciado_porvend(curs,faker):
     print("run")
     t=0
     gerentes_Vendedor=[50560365,90542850,51029504,74548110,73123844]
-    for x in range(1):
-        for y in range(1):
+    for x in range(5):#por la cantidad de gerentes
+        for y in range(1):#personas hacer gerenciadas
             try:
                 curs.execute('SELECT dni FROM vendedor ORDER BY RANDOM() LIMIT 1;')
                 dni_p = curs.fetchmany(1)
@@ -169,8 +169,8 @@ def create_gerenciado_porinsta(curs,faker):#instaladores 300 = 295
     print("run")
     t=0
     gerentes_instalador=[56981582,98548293,43238999,29405006,50560345]
-    for x in range(2):#cambiar segun cantidad de datos
-        for y in range(2):#cambiar segun cantidad de datos
+    for x in range(5):#por la cantidad de gerentes
+        for y in range(2):#personas gerenciadas
             try:
                 curs.execute('SELECT dni FROM instalador ORDER BY RANDOM() LIMIT 1;')
                 dni_p = curs.fetchmany(1)
