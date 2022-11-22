@@ -7,7 +7,7 @@ import psycopg2
 
 def crear_persona(curs, fake):
     print("run")
-    for _ in range(1000):
+    for _ in range(3):
         try:
             dni = randint(10000000,99999999)
             nombre = fake.name()
@@ -328,5 +328,6 @@ if __name__ == "__main__":
         with conn.cursor() as curs:
             #crear_instalador(curs,fake)
             #create_gerenciado_porinsta(curs,fake)
-            create_necesita_usar(curs,fake)
+            crear_persona(curs,fake)
+            #create_necesita_usar(curs,fake)
     conn.commit()
