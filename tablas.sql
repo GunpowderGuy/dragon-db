@@ -93,7 +93,7 @@ CREATE TABLE necesita_usar  (
 CREATE TABLE Gerenciado_por(
     Gerente bigint NOT NULL,
     Gerenciado bigint NOT NULL,
-    constraint PK_Gerenciado_por PRIMARY KEY (Gerente,Gerenciado),
+    constraint PK_Gerenciado_por PRIMARY KEY (Gerenciado),
     constraint FK_GerenteGP FOREIGN KEY (Gerente) REFERENCES Trabajador(DNI),
     constraint FK_GerenciadoGP FOREIGN KEY (Gerenciado) REFERENCES Trabajador(DNI)
 
